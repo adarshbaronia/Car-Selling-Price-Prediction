@@ -25,9 +25,12 @@ def predict():
         if(Fuel_Type_Petrol=='Petrol'):
                 Fuel_Type_Petrol=1
                 Fuel_Type_Diesel=0
-        else:
+        elif(Fuel_Type_Petrol=='Diesel'):
             Fuel_Type_Petrol=0
             Fuel_Type_Diesel=1
+        else:
+            Fuel_Type_Petrol=0
+            Fuel_Type_Diesel=0
         Year=2021-Year
         Seller_Type_Individual=request.form['Seller_Type_Individual']
         if(Seller_Type_Individual=='Individual'):
@@ -44,9 +47,11 @@ def predict():
         if output<0:
             return render_template('index.html',prediction_texts="Sorry you cannot sell this car")
         else:
-            return render_template('index.html',prediction_text="You Can Sell The Car at {}".format(output))
+            return render_template('index.html',prediction_text="You Can Sell The Car at INR {} Lacs".format(output))
     else:
         return render_template('index.html')
 
 if __name__=="__main__":
     app.run(debug=True)
+    
+    
